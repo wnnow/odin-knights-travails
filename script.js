@@ -30,10 +30,94 @@ function findKnight() {
   return 'Impossible! Where r u?';
 }
 
+function findMoveLeftUp(arr) {
+  const currentKnightPos = findKnight();
+
+  if (arr[0] - 1 < 0 || arr[1] - 2 < 0) return null;
+
+  currentKnightPos[0] = currentKnightPos[0] - 1;
+  currentKnightPos[1] = currentKnightPos[1] - 2;
+
+  return currentKnightPos;
+}
+
+function findMoveUpLeft(arr) {
+  const currentKnightPos = findKnight();
+
+  if (arr[0] - 2 < 0 || arr[1] - 1 < 0) return null;
+
+  currentKnightPos[0] = currentKnightPos[0] - 2;
+  currentKnightPos[1] = currentKnightPos[1] - 1;
+
+  return currentKnightPos;
+}
+
+function findMoveUpRight(arr) {
+  const currentKnightPos = findKnight();
+
+  if (arr[0] - 2 < 0 || arr[1] + 1 > column) return null;
+
+  currentKnightPos[0] = currentKnightPos[0] - 2;
+  currentKnightPos[1] = currentKnightPos[1] + 1;
+
+  return currentKnightPos;
+}
+
+function findMoveRightUp(arr) {
+  const currentKnightPos = findKnight();
+  if (arr[0] - 1 < 0 || arr[1] + 2 > column) return null;
+
+  currentKnightPos[0] = currentKnightPos[0] - 1;
+  currentKnightPos[1] = currentKnightPos[1] + 2;
+
+  return currentKnightPos;
+}
+
+function findMoveRightDown(arr) {
+  const currentKnightPos = findKnight();
+  if (arr[0] + 1 > row || arr[1] + 2 > column) return null;
+
+  currentKnightPos[0] = currentKnightPos[0] + 1;
+  currentKnightPos[1] = currentKnightPos[1] + 2;
+
+  return currentKnightPos;
+}
+
+function findMoveDownRight(arr) {
+  const currentKnightPos = findKnight();
+  if (arr[0] + 2 > row || arr[1] + 1 > column) return null;
+
+  currentKnightPos[0] = currentKnightPos[0] + 2;
+  currentKnightPos[1] = currentKnightPos[1] + 1;
+
+  return currentKnightPos;
+}
+
+function findMoveDownLeft(arr) {
+  const currentKnightPos = findKnight();
+  if (arr[0] + 2 > row || arr[1] - 1 < 0) return null;
+
+  currentKnightPos[0] = currentKnightPos[0] + 2;
+  currentKnightPos[1] = currentKnightPos[1] - 1;
+
+  return currentKnightPos;
+}
+
+function findMoveLeftDown(arr) {
+  const currentKnightPos = findKnight();
+  if (arr[0] + 1 > column || arr[1] - 2 < 0) return null;
+
+  currentKnightPos[0] = currentKnightPos[0] + 1;
+  currentKnightPos[1] = currentKnightPos[1] - 2;
+
+  return currentKnightPos;
+}
+
 function moveLeftUp(arr) {
   const currentKnightPos = findKnight();
-  if (arr[0] - 1 < 0) return;
-  if (arr[1] - 2 < 0) return;
+
+  if (arr[0] - 1 < 0 || arr[1] - 2 < 0) return null;
+
   arr[0] = arr[0] - 1;
   arr[1] = arr[1] - 2;
   updateKnightPos(arr, currentKnightPos);
@@ -42,8 +126,9 @@ function moveLeftUp(arr) {
 
 function moveUpLeft(arr) {
   const currentKnightPos = findKnight();
-  if (arr[0] - 2 < 0) return;
-  if (arr[1] - 1 < 0) return;
+
+  if (arr[0] - 2 < 0 || arr[1] - 1 < 0) return null;
+
   arr[0] = arr[0] - 2;
   arr[1] = arr[1] - 1;
   updateKnightPos(arr, currentKnightPos);
@@ -52,8 +137,9 @@ function moveUpLeft(arr) {
 
 function moveUpRight(arr) {
   const currentKnightPos = findKnight();
-  if (arr[0] - 2 < 0) return;
-  if (arr[1] + 1 > column) return;
+
+  if (arr[0] - 2 < 0 || arr[1] + 1 > column) return null;
+
   arr[0] = arr[0] - 2;
   arr[1] = arr[1] + 1;
   updateKnightPos(arr, currentKnightPos);
@@ -62,8 +148,8 @@ function moveUpRight(arr) {
 
 function moveRightUp(arr) {
   const currentKnightPos = findKnight();
-  if (arr[0] - 1 < 0) return;
-  if (arr[1] + 2 > column) return;
+  if (arr[0] - 1 < 0 || arr[1] + 2 > column) return null;
+
   arr[0] = arr[0] - 1;
   arr[1] = arr[1] + 2;
   updateKnightPos(arr, currentKnightPos);
@@ -72,8 +158,8 @@ function moveRightUp(arr) {
 
 function moveRightDown(arr) {
   const currentKnightPos = findKnight();
-  if (arr[0] + 1 > column) return;
-  if (arr[1] + 2 > column) return;
+  if (arr[0] + 1 > row || arr[1] + 2 > column) return null;
+
   arr[0] = arr[0] + 1;
   arr[1] = arr[1] + 2;
   updateKnightPos(arr, currentKnightPos);
@@ -82,8 +168,8 @@ function moveRightDown(arr) {
 
 function moveDownRight(arr) {
   const currentKnightPos = findKnight();
-  if (arr[0] + 2 > column) return;
-  if (arr[1] + 1 > column) return;
+  if (arr[0] + 2 > row || arr[1] + 1 > column) return null;
+
   arr[0] = arr[0] + 2;
   arr[1] = arr[1] + 1;
   updateKnightPos(arr, currentKnightPos);
@@ -92,8 +178,8 @@ function moveDownRight(arr) {
 
 function moveDownLeft(arr) {
   const currentKnightPos = findKnight();
-  if (arr[0] + 2 > column) return;
-  if (arr[1] - 1 < 0) return;
+  if (arr[0] + 2 > row || arr[1] - 1 < 0) return null;
+
   arr[0] = arr[0] + 2;
   arr[1] = arr[1] - 1;
   updateKnightPos(arr, currentKnightPos);
@@ -102,8 +188,8 @@ function moveDownLeft(arr) {
 
 function moveLeftDown(arr) {
   const currentKnightPos = findKnight();
-  if (arr[0] + 1 > column) return;
-  if (arr[1] - 2 < 0) return;
+  if (arr[0] + 1 > column || arr[1] - 2 < 0) return null;
+
   arr[0] = arr[0] + 1;
   arr[1] = arr[1] - 2;
   updateKnightPos(arr, currentKnightPos);
@@ -115,15 +201,33 @@ function updateKnightPos(arr, currentPos) {
   table[arr[0]][arr[1]] = 'k';
 }
 
+function checkKnightMoveAbleSquare(knightPositionArr) {
+  const result = [];
+  result.push(
+    findMoveLeftUp(knightPositionArr),
+    findMoveUpLeft(knightPositionArr),
+    findMoveUpRight(knightPositionArr),
+    findMoveRightUp(knightPositionArr),
+    findMoveRightDown(knightPositionArr),
+    findMoveDownRight(knightPositionArr),
+    findMoveDownLeft(knightPositionArr),
+    findMoveLeftDown(knightPositionArr)
+  );
+  return result;
+}
+
 let knightSquare = findKnight();
 console.log('🚀 ~ knightSquare:', knightSquare);
 // moveLeftUp(knightSquare);
 // moveUpLeft(knightSquare);
+console.log(findMoveLeftUp(knightSquare));
+console.log('🚀 ~ knightSquare:', knightSquare);
+console.log(checkKnightMoveAbleSquare(knightSquare));
 // moveUpRight(knightSquare);
 // moveRightUp(knightSquare);
 // moveRightDown(knightSquare);
 // moveDownRight(knightSquare);
 // moveDownLeft(knightSquare);
-moveLeftDown(knightSquare);
-console.log(table);
-console.log('🚀 ~ knightSquare:', knightSquare);
+// moveLeftDown(knightSquare);
+// console.log(table);
+// console.log('🚀 ~ knightSquare:', knightSquare);
