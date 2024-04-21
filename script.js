@@ -58,9 +58,7 @@ function knightMove(startPosition, targetPosition) {
       let square = targetPosition;
       while (square) {
         path.unshift(square);
-        console.log(square);
         square = parents[square.join()];
-        console.log('🚀 ~ knightMove ~ square parent square:', square);
       }
       return path;
     }
