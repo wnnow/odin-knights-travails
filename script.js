@@ -1,5 +1,5 @@
 // Initialize an empty adjacency list for each square
-let adjacencyList = {};
+const adjacencyList = {};
 const directions = [
   [-2, -1],
   [-2, 1],
